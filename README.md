@@ -4,7 +4,7 @@
 
 Take an approved hiring need from an open requisition through sourcing, structured selection, a conditional offer, compliant screening, and a fully executed employment agreement — consistently, defensibly, and with the candidate experience and legal obligations handled at every step.
 
-> **Reproducibility: 100/100 (grade A)** — this package was compiled by [sop-forge](https://) v1.0.0 from a single source model, so every artifact below is consistent with every other.
+> **Reproducibility: 100/100 (grade A)** — this package was compiled by sop-forge v1.0.0 from a single source model, so every artifact below is consistent with every other.
 
 ## Start here
 
@@ -16,24 +16,24 @@ Take an approved hiring need from an open requisition through sourcing, structur
 
 18 steps · 7 roles. Ends at: initiate right-to-work and hand off to onboarding.
 
-S1. **Open and document the requisition** — Hiring Manager
-S2. **Approve headcount and budget** — Compensation / Finance Approver *(decision)*
-S3. **Finalize the job description and selection criteria** — Recruiter / Talent Acquisition
-S4. **Source candidates** — Recruiter / Talent Acquisition
-S5. **Screen applications** — Recruiter / Talent Acquisition
-S6. **Recruiter phone screen** — Recruiter / Talent Acquisition
-S7. **Administer job-related assessments** — Recruiter / Talent Acquisition
-S8. **Conduct structured interviews** — Interview Panel
-S9. **Debrief and make the selection decision** — Hiring Manager *(decision)*
-S10. **Complete reference checks** — Recruiter / Talent Acquisition
-S11. **Approve compensation and extend a conditional verbal offer** — Recruiter / Talent Acquisition
-S12. **Candidate response and negotiation** — Candidate *(decision)*
-S13. **Disclose, authorize, and run the background check** — HR Business Partner
-S14. **Adjudicate the results** — HR Business Partner *(decision)*
-S15. **Run FCRA adverse action (only if withdrawing)** — HR Business Partner *(decision)*
-S16. **Extend the formal written offer** — HR Business Partner
-S17. **Countersign and execute the agreement** — HR Business Partner
-S18. **Initiate right-to-work and hand off to onboarding** — HR Business Partner
+- **S1. Open and document the requisition** — Hiring Manager
+- **S2. Approve headcount and budget** — Compensation / Finance Approver *(decision)*
+- **S3. Finalize the job description and selection criteria** — Recruiter / Talent Acquisition
+- **S4. Source candidates** — Recruiter / Talent Acquisition
+- **S5. Screen applications** — Recruiter / Talent Acquisition
+- **S6. Recruiter phone screen** — Recruiter / Talent Acquisition
+- **S7. Administer job-related assessments** — Recruiter / Talent Acquisition
+- **S8. Conduct structured interviews** — Interview Panel
+- **S9. Debrief and make the selection decision** — Hiring Manager *(decision)*
+- **S10. Complete reference checks** — Recruiter / Talent Acquisition
+- **S11. Approve compensation and extend a conditional verbal offer** — Recruiter / Talent Acquisition
+- **S12. Candidate response and negotiation** — Candidate *(decision)*
+- **S13. Disclose, authorize, and run the background check** — HR Business Partner
+- **S14. Adjudicate the results** — HR Business Partner *(decision)*
+- **S15. Run FCRA adverse action (only if withdrawing)** — HR Business Partner *(decision)*
+- **S16. Extend the formal written offer** — HR Business Partner
+- **S17. Countersign and execute the agreement** — HR Business Partner
+- **S18. Initiate right-to-work and hand off to onboarding** — HR Business Partner
 
 ## Roles
 
