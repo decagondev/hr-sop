@@ -1,0 +1,42 @@
+flowchart TB
+  S1["S1: Open and document the requisition"]
+  S2{"S2: Approve headcount and budget"}
+  S3["S3: Finalize the job description and selection criteria"]
+  S4["S4: Source candidates"]
+  S5["S5: Screen applications"]
+  S6["S6: Recruiter phone screen"]
+  S7["S7: Administer job-related assessments"]
+  S8["S8: Conduct structured interviews"]
+  S9{"S9: Debrief and make the selection decision"}
+  S10["S10: Complete reference checks"]
+  S11["S11: Approve compensation and extend a conditional verbal offer"]
+  S12{"S12: Candidate response and negotiation"}
+  S13["S13: Disclose, authorize, and run the background check"]
+  S14{"S14: Adjudicate the results"}
+  S15{"S15: Run FCRA adverse action (only if withdrawing)"}
+  S16["S16: Extend the formal written offer"]
+  S17["S17: Countersign and execute the agreement"]
+  S18["S18: Initiate right-to-work and hand off to onboarding"]
+  S1 --> S2
+  S2 -->|Headcount and budget approved| S3
+  S2 -->|Not approved — revise or defer| S1
+  S3 --> S4
+  S4 --> S5
+  S5 --> S6
+  S6 --> S7
+  S7 --> S8
+  S8 --> S9
+  S9 -->|A suitable candidate is selected| S10
+  S9 -->|No suitable candidate — re-open sourcing| S4
+  S10 --> S11
+  S11 --> S12
+  S12 -->|Offer accepted| S13
+  S12 -->|Counter-offer — re-approve and re-issue| S11
+  S12 -->|Declined — revisit the shortlist| S9
+  S13 --> S14
+  S14 -->|Clears — no disqualifying, job-related information| S16
+  S14 -->|Potentially disqualifying information found| S15
+  S15 -->|Dispute resolved in the candidate's favor or record corrected| S16
+  S15 -->|Adverse action upheld — offer rescinded, revisit the shortlist| S9
+  S16 --> S17
+  S17 --> S18

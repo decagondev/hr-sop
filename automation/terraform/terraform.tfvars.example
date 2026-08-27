@@ -1,0 +1,3 @@
+# Copy to terraform.tfvars and edit.
+# Destructive steps stay off until you explicitly opt in:
+confirm_destructive = false

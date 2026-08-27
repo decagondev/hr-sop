@@ -1,0 +1,211 @@
+{
+  "rows": [
+    {
+      "id": "S1",
+      "title": "Open and document the requisition",
+      "has_command": true,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": true,
+      "needs_guardrail": false,
+      "has_guardrail": false,
+      "idempotent": true
+    },
+    {
+      "id": "S2",
+      "title": "Approve headcount and budget",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": false,
+      "idempotent": null
+    },
+    {
+      "id": "S3",
+      "title": "Finalize the job description and selection criteria",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": true,
+      "idempotent": null
+    },
+    {
+      "id": "S4",
+      "title": "Source candidates",
+      "has_command": true,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": true,
+      "needs_guardrail": false,
+      "has_guardrail": false,
+      "idempotent": true
+    },
+    {
+      "id": "S5",
+      "title": "Screen applications",
+      "has_command": true,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": true,
+      "needs_guardrail": false,
+      "has_guardrail": true,
+      "idempotent": true
+    },
+    {
+      "id": "S6",
+      "title": "Recruiter phone screen",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": false,
+      "idempotent": null
+    },
+    {
+      "id": "S7",
+      "title": "Administer job-related assessments",
+      "has_command": true,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": true,
+      "needs_guardrail": false,
+      "has_guardrail": true,
+      "idempotent": true
+    },
+    {
+      "id": "S8",
+      "title": "Conduct structured interviews",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": true,
+      "idempotent": null
+    },
+    {
+      "id": "S9",
+      "title": "Debrief and make the selection decision",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": false,
+      "idempotent": null
+    },
+    {
+      "id": "S10",
+      "title": "Complete reference checks",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": false,
+      "idempotent": null
+    },
+    {
+      "id": "S11",
+      "title": "Approve compensation and extend a conditional verbal offer",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": false,
+      "idempotent": null
+    },
+    {
+      "id": "S12",
+      "title": "Candidate response and negotiation",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": false,
+      "idempotent": null
+    },
+    {
+      "id": "S13",
+      "title": "Disclose, authorize, and run the background check",
+      "has_command": true,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": true,
+      "needs_guardrail": false,
+      "has_guardrail": true,
+      "idempotent": true
+    },
+    {
+      "id": "S14",
+      "title": "Adjudicate the results",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": false,
+      "idempotent": null
+    },
+    {
+      "id": "S15",
+      "title": "Run FCRA adverse action (only if withdrawing)",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": true,
+      "idempotent": null
+    },
+    {
+      "id": "S16",
+      "title": "Extend the formal written offer",
+      "has_command": true,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": true,
+      "needs_guardrail": false,
+      "has_guardrail": true,
+      "idempotent": true
+    },
+    {
+      "id": "S17",
+      "title": "Countersign and execute the agreement",
+      "has_command": false,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": false,
+      "needs_guardrail": false,
+      "has_guardrail": false,
+      "idempotent": null
+    },
+    {
+      "id": "S18",
+      "title": "Initiate right-to-work and hand off to onboarding",
+      "has_command": true,
+      "has_verification": true,
+      "has_rollback": false,
+      "needs_command": true,
+      "needs_guardrail": false,
+      "has_guardrail": true,
+      "idempotent": true
+    }
+  ],
+  "totals": {
+    "steps": 18,
+    "verification_pct": 100,
+    "rollback_pct": 0,
+    "command_pct": 100,
+    "guardrail_pct": 100,
+    "destructive_steps": 0,
+    "automatable_steps": 7
+  }
+}

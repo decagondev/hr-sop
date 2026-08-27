@@ -1,0 +1,11 @@
+---
+# Hire for an open role: requisition to signed contract
+# Run:  ansible-playbook -i inventory.ini playbook.yml
+# Slice a single step:  ansible-playbook playbook.yml --tags S3
+# Allow destructive steps:  -e confirm_destructive=true
+# CI (no prompts):  -e skip_pauses=true
+- name: Hire for an open role: requisition to signed contract
+  hosts: all
+  gather_facts: true
+  roles:
+    - sop_hr_002

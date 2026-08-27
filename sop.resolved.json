@@ -1,0 +1,838 @@
+{
+  "schema_version": "1.0",
+  "meta": {
+    "id": "SOP-HR-002",
+    "title": "Hire for an open role: requisition to signed contract",
+    "domain": "hr",
+    "version": "1.0.0",
+    "status": "approved",
+    "owner": "Talent Acquisition",
+    "approvers": [
+      "Head of Talent Acquisition",
+      "HR Business Partner",
+      "Legal / Compliance"
+    ],
+    "effective_date": "2026-01-15",
+    "review_cycle": "annual",
+    "standards": [
+      "Title VII of the Civil Rights Act",
+      "Age Discrimination in Employment Act (ADEA)",
+      "Americans with Disabilities Act (ADA)",
+      "EEOC Uniform Guidelines on Employee Selection Procedures (29 CFR Part 1607)",
+      "EEOC recordkeeping (29 CFR 1602.14)",
+      "Fair Credit Reporting Act (FCRA)",
+      "Ban-the-box / fair-chance laws",
+      "Immigration Reform and Control Act (IRCA) / Form I-9",
+      "GDPR / CCPA (candidate data)"
+    ],
+    "related_sops": [
+      "SOP-HR-001"
+    ]
+  },
+  "overview": {
+    "purpose": "Take an approved hiring need from an open requisition through sourcing, structured selection, a conditional offer, compliant screening, and a fully executed employment agreement \u2014 consistently, defensibly, and with the candidate experience and legal obligations handled at every step.",
+    "scope_in": [
+      "Requisition creation and headcount/budget approval",
+      "Job description and job-related selection criteria",
+      "Sourcing, application screening, and interviews",
+      "Structured evaluation, selection, and reference checks",
+      "Conditional offer, FCRA-compliant background screening, and adverse action",
+      "Offer, negotiation, and execution of the employment agreement",
+      "Initiation of right-to-work (Form I-9) and handoff to onboarding"
+    ],
+    "scope_out": [
+      "Day-one onboarding and orientation (see SOP-HR-001)",
+      "Long-range workforce planning and headcount strategy",
+      "Independent contractor / 1099 engagements",
+      "Immigration sponsorship and visa petitions"
+    ],
+    "outcomes": [
+      "A qualified candidate hired through a consistent, documented, defensible process",
+      "A fully executed employment agreement on file",
+      "Right-to-work verification initiated with a clean handoff to onboarding"
+    ],
+    "kpis": [
+      "Time-to-fill (requisition approved to offer accepted)",
+      "Time-to-hire (candidate entry to offer accepted)",
+      "Offer acceptance rate",
+      "Selection-stage adverse-impact ratio (4/5 rule)",
+      "Scorecard completion rate"
+    ],
+    "definitions": {
+      "ATS": "Applicant Tracking System \u2014 the system of record for the requisition and candidates.",
+      "CRA": "Consumer Reporting Agency \u2014 third party that produces the background report under the FCRA.",
+      "BARS": "Behaviorally Anchored Rating Scale \u2014 defined behavior for each score on the interview scorecard.",
+      "Conditional offer": "An offer contingent on clearing screening and right-to-work checks.",
+      "Adverse action": "A decision not to hire based on a background report, triggering FCRA notices.",
+      "At-will": "Employment either party may end at any time, subject to law and any contract terms."
+    },
+    "assumptions": [
+      "US-based W-2 employment is assumed; this is not legal advice.",
+      "Requirements vary by state and municipality (background checks, ban-the-box, pay transparency, contract vs at-will) \u2014 confirm local rules.",
+      "The employer uses an ATS and a third-party CRA for background screening."
+    ]
+  },
+  "roles": [
+    {
+      "id": "hiring_manager",
+      "name": "Hiring Manager",
+      "responsibilities": [
+        "Owns the role, its requirements, and the final selection decision",
+        "Defines job-related criteria and participates in structured interviews"
+      ]
+    },
+    {
+      "id": "recruiter",
+      "name": "Recruiter / Talent Acquisition",
+      "responsibilities": [
+        "Drives the process end to end and owns the candidate experience",
+        "Sources, screens, coordinates interviews, and extends offers"
+      ]
+    },
+    {
+      "id": "hrbp",
+      "name": "HR Business Partner",
+      "responsibilities": [
+        "Oversees process compliance, recordkeeping, and offer/contract governance",
+        "Owns FCRA adverse action and right-to-work verification"
+      ]
+    },
+    {
+      "id": "panel",
+      "name": "Interview Panel",
+      "responsibilities": [
+        "Conducts structured interviews and completes anchored scorecards",
+        "Provides evidence-based, job-related evaluations"
+      ]
+    },
+    {
+      "id": "comp_approver",
+      "name": "Compensation / Finance Approver",
+      "responsibilities": [
+        "Approves headcount, budget, and the compensation package",
+        "Confirms the offer sits within the approved band"
+      ]
+    },
+    {
+      "id": "legal",
+      "name": "Legal / Compliance",
+      "responsibilities": [
+        "Reviews non-standard offer terms and the employment agreement",
+        "Advises on adverse action and jurisdictional requirements"
+      ]
+    },
+    {
+      "id": "candidate",
+      "name": "Candidate",
+      "responsibilities": [
+        "External party; responds to the offer and completes required documents"
+      ]
+    }
+  ],
+  "prerequisites": {
+    "skills": [
+      "Structured interviewing and scorecard calibration",
+      "Working knowledge of EEOC, FCRA, and I-9 obligations"
+    ],
+    "access": [
+      "ATS with permission to create requisitions and post roles",
+      "Approved offer-letter and employment-agreement templates",
+      "Background-screening (CRA) account with disclosure/authorization forms"
+    ],
+    "tools": [
+      "ats",
+      "cra-api",
+      "e-signature",
+      "e-verify"
+    ],
+    "materials": [
+      "Interview scorecard templates with behavioral anchors (BARS)",
+      "Standalone FCRA disclosure and authorization document (single purpose)"
+    ],
+    "inputs": [
+      "Approved workforce plan",
+      "Job architecture and compensation bands",
+      "Interview scorecard templates",
+      "Employment agreement templates"
+    ]
+  },
+  "safety": [
+    {
+      "kind": "compliance",
+      "note": "Evaluate every candidate for the same role against the same job-related criteria, in the same order; do not discriminate on protected characteristics.",
+      "standard_ref": "Title VII; ADEA; ADA"
+    },
+    {
+      "kind": "compliance",
+      "note": "Interviews, tests, and screens are selection procedures \u2014 keep them job-related and consistent with business necessity, and monitor adverse impact (4/5 rule).",
+      "standard_ref": "EEOC Uniform Guidelines on Employee Selection Procedures (29 CFR Part 1607)"
+    },
+    {
+      "kind": "data",
+      "note": "Candidate and employee personal data must have a lawful basis, limited access, and defined retention; retain selection records at least one year (two years for federal contractors).",
+      "standard_ref": "29 CFR 1602.14; GDPR / CCPA"
+    },
+    {
+      "kind": "compliance",
+      "note": "A background check via a CRA requires a standalone written disclosure and separate authorization; an adverse decision requires the two-step FCRA process (pre-adverse notice with the report and a Summary of Rights, a reasonable waiting period, then a final adverse-action notice).",
+      "standard_ref": "Fair Credit Reporting Act (15 U.S.C. 1681)"
+    },
+    {
+      "kind": "compliance",
+      "note": "Where fair-chance law applies, delay any criminal-history inquiry until after a conditional offer, and apply an EEOC individualized assessment (nature of the offense, time elapsed, job-relatedness).",
+      "standard_ref": "Ban-the-box / fair-chance laws"
+    },
+    {
+      "kind": "legal",
+      "note": "Verify employment eligibility with Form I-9 \u2014 Section 1 no later than the first day of work, Section 2 within three business days of the start date; run E-Verify if enrolled.",
+      "standard_ref": "IRCA / Form I-9 (INA 274A)"
+    },
+    {
+      "kind": "accessibility",
+      "note": "Offer and honor reasonable accommodations to candidates with disabilities throughout the process.",
+      "standard_ref": "ADA"
+    }
+  ],
+  "steps": [
+    {
+      "id": "S1",
+      "title": "Open and document the requisition",
+      "description": "Capture the confirmed hiring need as a requisition in the ATS: role, level, reporting line, justification, target start, and the business case. This is the record everything else hangs off.",
+      "actor": "hiring_manager",
+      "type": "semi-automated",
+      "inputs": [
+        "Approved workforce plan"
+      ],
+      "outputs": [
+        "Requisition record"
+      ],
+      "commands": [
+        "ats req upsert --external-id \"$REQ_KEY\" --role \"$ROLE_TITLE\" --level \"$LEVEL\" --manager \"$HM\" --justification-file ./business-case.md"
+      ],
+      "verification": "A requisition record exists in the ATS with role, level, reporting line, and business case.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "60m",
+      "branches": [],
+      "automation": {
+        "automatable": "partial",
+        "tool": "ats",
+        "idempotent": true,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": []
+      },
+      "notes": "Keep the business case job-related; it anchors the selection criteria."
+    },
+    {
+      "id": "S2",
+      "title": "Approve headcount and budget",
+      "description": "Finance / compensation reviews the requisition against headcount plan and budget and either approves it to open or returns it. No sourcing happens before approval.",
+      "actor": "comp_approver",
+      "type": "decision",
+      "inputs": [
+        "Requisition record"
+      ],
+      "outputs": [
+        "Approved requisition"
+      ],
+      "commands": [],
+      "verification": "The requisition shows an approval record with approver, date, and budgeted band.",
+      "rollback": "",
+      "escalation": "If budget is contested, escalate to the department head and HRBP.",
+      "duration": "30m",
+      "branches": [
+        {
+          "condition": "Headcount and budget approved",
+          "goto": "S3"
+        },
+        {
+          "condition": "Not approved \u2014 revise or defer",
+          "goto": "S1"
+        }
+      ],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "S3",
+      "title": "Finalize the job description and selection criteria",
+      "description": "With the hiring manager, turn the requisition into an approved job description and a structured scorecard: 6\u201312 job-related competencies, each with behavioral anchors. Requirements must be necessary for the role.",
+      "actor": "recruiter",
+      "type": "manual",
+      "inputs": [
+        "Approved requisition",
+        "Job architecture and compensation bands"
+      ],
+      "outputs": [
+        "Approved job description",
+        "Interview scorecard kit"
+      ],
+      "commands": [],
+      "verification": "Every listed requirement is job-related and consistent with business necessity; the scorecard defines competencies with behavioral anchors.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "90m",
+      "branches": [],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": [
+          "Avoid criteria that exclude protected groups without business necessity."
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "S4",
+      "title": "Source candidates",
+      "description": "Post the role to the required internal and external channels and run sourcing and referrals to build a diverse, qualified pipeline. Honor any internal-posting or pay-transparency requirements.",
+      "actor": "recruiter",
+      "type": "semi-automated",
+      "inputs": [
+        "Approved job description"
+      ],
+      "outputs": [
+        "Candidate pipeline"
+      ],
+      "commands": [
+        "ats job post --req \"$REQ_ID\" --channels internal,careers,linkedin --pay-range \"$PAY_RANGE\" --idempotency-key \"$REQ_ID-post\""
+      ],
+      "verification": "The role is posted to all required channels and a candidate pipeline is building in the ATS.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "240m",
+      "branches": [],
+      "automation": {
+        "automatable": "partial",
+        "tool": "ats",
+        "idempotent": true,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": []
+      },
+      "notes": "Include the pay range where pay-transparency law requires it."
+    },
+    {
+      "id": "S5",
+      "title": "Screen applications",
+      "description": "Review applicants against the same job-related criteria and shortlist. Do not ask about criminal history at this stage where fair-chance law applies.",
+      "actor": "recruiter",
+      "type": "semi-automated",
+      "inputs": [
+        "Candidate pipeline"
+      ],
+      "outputs": [
+        "Screened shortlist"
+      ],
+      "commands": [
+        "ats screen run --req \"$REQ_ID\" --criteria ./job-related-criteria.yaml --log ./screening-log.csv"
+      ],
+      "verification": "All applicants are screened against the same criteria and screening decisions are logged.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "180m",
+      "branches": [],
+      "automation": {
+        "automatable": "partial",
+        "tool": "ats",
+        "idempotent": true,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": [
+          "Do not ask about criminal history on the application (ban-the-box / fair-chance).",
+          "Screen every applicant against the same job-related criteria and log decisions."
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "S6",
+      "title": "Recruiter phone screen",
+      "description": "Hold a consistent phone/video screen with each shortlisted candidate to confirm fit, motivation, logistics, and compensation expectations.",
+      "actor": "recruiter",
+      "type": "manual",
+      "inputs": [
+        "Screened shortlist"
+      ],
+      "outputs": [
+        "Qualified shortlist"
+      ],
+      "commands": [],
+      "verification": "Each candidate is screened with the same core questions; notes are recorded in the ATS.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "180m",
+      "branches": [],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "S7",
+      "title": "Administer job-related assessments",
+      "description": "Where the role calls for it, administer the same validated, job-related assessment to every candidate and record results. Skip only if no assessment is used for this role.",
+      "actor": "recruiter",
+      "type": "semi-automated",
+      "inputs": [
+        "Qualified shortlist"
+      ],
+      "outputs": [
+        "Assessment results"
+      ],
+      "commands": [
+        "ats assessment send --candidates ./shortlist.csv --assessment \"$ASSESSMENT_ID\" --if-not-sent"
+      ],
+      "verification": "The same assessment is sent to all candidates for the role and results are recorded.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "60m",
+      "branches": [],
+      "automation": {
+        "automatable": "partial",
+        "tool": "ats",
+        "idempotent": true,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": [
+          "Use a validated, job-related assessment applied identically to all candidates."
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "S8",
+      "title": "Conduct structured interviews",
+      "description": "Run structured panel interviews using the same core questions for every candidate, scoring against the BARS scorecard. Offer reasonable accommodations on request.",
+      "actor": "panel",
+      "type": "manual",
+      "inputs": [
+        "Qualified shortlist",
+        "Interview scorecard kit"
+      ],
+      "outputs": [
+        "Completed scorecards"
+      ],
+      "commands": [],
+      "verification": "Every interviewer completes an anchored scorecard with evidence notes; the same core questions were used.",
+      "rollback": "",
+      "escalation": "Accommodation requests go to the HRBP for prompt handling.",
+      "duration": "240m",
+      "branches": [],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": [
+          "Ask all candidates the same core questions; score against the anchors."
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "S9",
+      "title": "Debrief and make the selection decision",
+      "description": "Convene a structured debrief to reconcile scores against the anchors \u2014 not to reach consensus by social pressure \u2014 and make a documented, job-related decision. Retain the records.",
+      "actor": "hiring_manager",
+      "type": "decision",
+      "inputs": [
+        "Completed scorecards",
+        "Assessment results"
+      ],
+      "outputs": [
+        "Selection decision record",
+        "Selected candidate"
+      ],
+      "commands": [],
+      "verification": "The decision and its rationale are documented and stored; the selection-rate is checked against the 4/5 rule.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "60m",
+      "branches": [
+        {
+          "condition": "A suitable candidate is selected",
+          "goto": "S10"
+        },
+        {
+          "condition": "No suitable candidate \u2014 re-open sourcing",
+          "goto": "S4"
+        }
+      ],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "S10",
+      "title": "Complete reference checks",
+      "description": "Run consistent, job-related reference checks on the selected candidate and record the results before making the offer conditional.",
+      "actor": "recruiter",
+      "type": "manual",
+      "inputs": [
+        "Selected candidate"
+      ],
+      "outputs": [
+        "Reference check results"
+      ],
+      "commands": [],
+      "verification": "References are completed with consistent questions and results are recorded.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "60m",
+      "branches": [],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "S11",
+      "title": "Approve compensation and extend a conditional verbal offer",
+      "description": "Confirm the package is approved and within band, then extend a verbal offer that is explicitly conditional on clearing screening and right-to-work checks. Follow up in writing summarizing the key terms.",
+      "actor": "recruiter",
+      "type": "manual",
+      "inputs": [
+        "Selection decision record",
+        "Job architecture and compensation bands"
+      ],
+      "outputs": [
+        "Approved compensation",
+        "Verbal conditional offer"
+      ],
+      "commands": [],
+      "verification": "Compensation is approved and within band; the conditional verbal offer and its terms are confirmed by email.",
+      "rollback": "",
+      "escalation": "Out-of-band compensation requires comp_approver sign-off before the offer is extended.",
+      "duration": "60m",
+      "branches": [],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "S12",
+      "title": "Candidate response and negotiation",
+      "description": "The candidate accepts, negotiates, or declines the conditional offer. Route accordingly; re-approve compensation for any counter-offer.",
+      "actor": "candidate",
+      "type": "decision",
+      "inputs": [
+        "Verbal conditional offer"
+      ],
+      "outputs": [
+        "Offer acceptance (verbal)"
+      ],
+      "commands": [],
+      "verification": "The candidate's response is recorded; any negotiated changes are captured before proceeding.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "30m",
+      "branches": [
+        {
+          "condition": "Offer accepted",
+          "goto": "S13"
+        },
+        {
+          "condition": "Counter-offer \u2014 re-approve and re-issue",
+          "goto": "S11"
+        },
+        {
+          "condition": "Declined \u2014 revisit the shortlist",
+          "goto": "S9"
+        }
+      ],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "S13",
+      "title": "Disclose, authorize, and run the background check",
+      "description": "Provide the standalone FCRA disclosure and obtain separate written authorization, then order the background check via the CRA. Keep the conditional offer in place while screening runs.",
+      "actor": "hrbp",
+      "type": "semi-automated",
+      "inputs": [
+        "Offer acceptance (verbal)"
+      ],
+      "outputs": [
+        "Signed disclosure and authorization",
+        "Background check report"
+      ],
+      "commands": [
+        "cra-api order --candidate \"$CANDIDATE_ID\" --package standard --auth-file ./signed-authorization.pdf --idempotency-key \"$CANDIDATE_ID-$REQ_ID\""
+      ],
+      "verification": "A signed standalone disclosure and authorization are on file before the report is ordered; the report is stored securely.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "30m",
+      "branches": [],
+      "automation": {
+        "automatable": "partial",
+        "tool": "cra-api",
+        "idempotent": true,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": [
+          "Never order the report before a signed standalone disclosure and authorization are on file.",
+          "The disclosure must be a single-purpose document, not embedded in the application.",
+          "Store background data securely with access limited to need-to-know."
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "S14",
+      "title": "Adjudicate the results",
+      "description": "Review the background and reference results. If nothing disqualifying is found, proceed to the written offer. If there is potentially disqualifying information, apply an individualized assessment and enter adverse action.",
+      "actor": "hrbp",
+      "type": "decision",
+      "inputs": [
+        "Background check report",
+        "Reference check results"
+      ],
+      "outputs": [
+        "Adjudication decision"
+      ],
+      "commands": [],
+      "verification": "The adjudication applies job-relatedness and an individualized assessment; the rationale is documented.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "45m",
+      "branches": [
+        {
+          "condition": "Clears \u2014 no disqualifying, job-related information",
+          "goto": "S16"
+        },
+        {
+          "condition": "Potentially disqualifying information found",
+          "goto": "S15"
+        }
+      ],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "S15",
+      "title": "Run FCRA adverse action (only if withdrawing)",
+      "description": "Send the pre-adverse-action notice with a copy of the report and the Summary of Rights, wait a reasonable period for dispute (best practice at least five business days; some jurisdictions longer), then either restore the offer or send the final adverse-action notice.",
+      "actor": "hrbp",
+      "type": "decision",
+      "inputs": [
+        "Adjudication decision"
+      ],
+      "outputs": [
+        "Adverse action record"
+      ],
+      "commands": [],
+      "verification": "Both notices are documented with dates and the waiting period is observed; no irreversible internal action is taken during the waiting period.",
+      "rollback": "",
+      "escalation": "Legal reviews any contested or borderline adverse action before the final notice.",
+      "duration": "90m",
+      "branches": [
+        {
+          "condition": "Dispute resolved in the candidate's favor or record corrected",
+          "goto": "S16"
+        },
+        {
+          "condition": "Adverse action upheld \u2014 offer rescinded, revisit the shortlist",
+          "goto": "S9"
+        }
+      ],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": [
+          "Do not mark the candidate rejected or backfill the role during the waiting period."
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "S16",
+      "title": "Extend the formal written offer",
+      "description": "Issue the written offer letter / employment agreement matching the approved compensation and the verbal terms, with an acceptance deadline. Route any non-standard terms to Legal first.",
+      "actor": "hrbp",
+      "type": "semi-automated",
+      "inputs": [
+        "Adjudication decision",
+        "Approved compensation",
+        "Employment agreement templates"
+      ],
+      "outputs": [
+        "Executed-ready offer letter",
+        "Employment agreement draft"
+      ],
+      "commands": [
+        "esign send --template employment-agreement --candidate \"$CANDIDATE_ID\" --fields ./offer-terms.json --deadline \"$ACCEPT_BY\" --idempotency-key \"$CANDIDATE_ID-offer\""
+      ],
+      "verification": "The sent offer matches approved terms; non-standard terms were reviewed by Legal; an acceptance deadline is set.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "60m",
+      "branches": [],
+      "automation": {
+        "automatable": "partial",
+        "tool": "e-signature",
+        "idempotent": true,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": [
+          "The offer letter must match the approved compensation and the verbal offer.",
+          "Route non-standard terms (equity, severance, non-compete) to Legal before sending."
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "S17",
+      "title": "Countersign and execute the agreement",
+      "description": "On candidate signature, countersign to fully execute the employment agreement and confirm the start date. This is the signed contract that completes the hire.",
+      "actor": "hrbp",
+      "type": "manual",
+      "inputs": [
+        "Employment agreement draft"
+      ],
+      "outputs": [
+        "Fully executed employment agreement"
+      ],
+      "commands": [],
+      "verification": "Candidate signature and employer countersignature are on file; the start date is confirmed.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "30m",
+      "branches": [],
+      "automation": {
+        "automatable": "no",
+        "tool": "manual",
+        "idempotent": false,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": []
+      },
+      "notes": ""
+    },
+    {
+      "id": "S18",
+      "title": "Initiate right-to-work and hand off to onboarding",
+      "description": "Start Form I-9 and (if enrolled) E-Verify, and hand the new hire to onboarding. Section 1 is due no later than the first day; Section 2 within three business days of the start date.",
+      "actor": "hrbp",
+      "type": "semi-automated",
+      "inputs": [
+        "Fully executed employment agreement"
+      ],
+      "outputs": [
+        "Initiated Form I-9",
+        "Onboarding handoff package"
+      ],
+      "commands": [
+        "everify case ensure --employee \"$EMPLOYEE_ID\" --start-date \"$START_DATE\""
+      ],
+      "verification": "Form I-9 is initiated and the onboarding handoff package is delivered to the onboarding owner.",
+      "rollback": "",
+      "escalation": "",
+      "duration": "45m",
+      "branches": [],
+      "automation": {
+        "automatable": "partial",
+        "tool": "e-verify",
+        "idempotent": true,
+        "destructive": false,
+        "script_ref": null,
+        "guardrails": [
+          "Section 1 no later than the first day; Section 2 within three business days of start.",
+          "Do not use I-9 to pre-screen work authorization before offer acceptance.",
+          "Never open a duplicate E-Verify case for the same employee."
+        ]
+      },
+      "notes": "I-9 Section 2 and day-one tasks complete in onboarding (SOP-HR-001)."
+    }
+  ],
+  "references": [
+    "EEOC \u2014 Background Checks: What Employers Need to Know (eeoc.gov)",
+    "EEOC Uniform Guidelines on Employee Selection Procedures, 29 CFR Part 1607",
+    "FTC/CFPB \u2014 A Summary of Your Rights Under the Fair Credit Reporting Act",
+    "USCIS \u2014 Form I-9, Employment Eligibility Verification (uscis.gov/i-9)"
+  ],
+  "links": [
+    {
+      "sop_ref": "SOP-HR-001",
+      "relation": "successor",
+      "at_step": "S18",
+      "note": "Day-one onboarding and I-9 completion continue in the onboarding SOP."
+    }
+  ],
+  "change_log": [
+    {
+      "version": "1.0.0",
+      "date": "2026-01-15",
+      "author": "Talent Acquisition",
+      "summary": "First approved version; research-grounded end-to-end hiring SOP."
+    }
+  ],
+  "open_questions": [],
+  "gaps": [],
+  "reproducibility": {
+    "score": 100,
+    "grade": "A",
+    "blockers": [],
+    "warnings": [],
+    "human_judgment_points": [
+      "S2: Approve headcount and budget",
+      "S9: Debrief and make the selection decision",
+      "S12: Candidate response and negotiation",
+      "S14: Adjudicate the results",
+      "S15: Run FCRA adverse action (only if withdrawing)"
+    ],
+    "automatable_ratio": 0.194
+  }
+}

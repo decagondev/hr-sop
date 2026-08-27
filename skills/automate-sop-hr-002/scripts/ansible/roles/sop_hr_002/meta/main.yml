@@ -1,0 +1,6 @@
+---
+galaxy_info:
+  role_name: sop_hr_002
+  description: Hire for an open role: requisition to signed contract
+  license: proprietary
+dependencies: []

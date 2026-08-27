@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hire for an open role: requisition to signed contract — slides</title>
+<style>:root {
+  --accent: #7c3aed;
+  --accent-soft: #a78bfa;
+  --bg: #0b0f14;
+  --surface: #121822;
+  --surface-2: #1a2230;
+  --border: #26303f;
+  --text: #e6edf3;
+  --muted: #93a1b1;
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --bad: #ef4444;
+  --radius: 14px;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: var(--sans); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent-soft); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
+code, pre { font-family: var(--mono); font-size: 0.9em; }
+pre {
+  background: #0a0e13; border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; overflow-x: auto;
+}
+code { background: rgba(255,255,255,0.06); padding: 1px 6px; border-radius: 6px; }
+pre code { background: none; padding: 0; }
+.badge {
+  display: inline-block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.04em; padding: 3px 9px; border-radius: 999px;
+  border: 1px solid var(--border); color: var(--muted);
+}
+.badge.auto { color: var(--accent-soft); border-color: var(--accent); }
+.badge.manual { color: var(--muted); }
+.badge.decision { color: var(--warn); border-color: var(--warn); }
+.badge.destructive { color: var(--bad); border-color: var(--bad); }
+.grad-text {
+  background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 22px;
+}
+.muted { color: var(--muted); }
+body { overflow: hidden; }
+.deck { height: 100vh; width: 100vw; position: relative; }
+.slide { position: absolute; inset: 0; display: flex; flex-direction: column;
+  justify-content: center; padding: 6vh 8vw; opacity: 0; transform: translateY(20px);
+  transition: opacity .4s, transform .4s; pointer-events: none; overflow-y: auto; }
+.slide.active { opacity: 1; transform: none; pointer-events: auto; }
+.slide.title { align-items: flex-start; text-align: left; }
+.slide.divider { align-items: center; text-align: center; }
+.slide h1 { font-size: clamp(2.4rem, 7vw, 5rem); margin: .2em 0; }
+.slide h2 { font-size: clamp(1.8rem, 4.5vw, 3rem); margin: 0 0 .5em; }
+.slide h3 { color: var(--accent-soft); margin: .8em 0 .3em; }
+.slide .lead { font-size: clamp(1.1rem, 2.4vw, 1.6rem); color: var(--text); max-width: 40ch; }
+.slide ul { font-size: clamp(1rem, 2.2vw, 1.4rem); line-height: 1.7; }
+.slide .eyebrow, .kicker { text-transform: uppercase; letter-spacing: .12em;
+  font-size: .8rem; color: var(--muted); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; }
+.roles { display: grid; gap: 10px; }
+.role { display: flex; flex-direction: column; padding: 12px 16px;
+  border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+.step-top { display: flex; justify-content: space-between; align-items: center; }
+.badges { display: flex; gap: 6px; }
+.verify { color: var(--ok); margin-top: 12px; font-size: 1.1rem; }
+.rollback { color: var(--warn); margin-top: 6px; font-size: 1.05rem; }
+.rail { position: fixed; bottom: 0; left: 0; right: 0; height: 4px; background: var(--surface-2); z-index: 5; }
+.rail > i { display: block; height: 100%; background: linear-gradient(90deg,var(--accent),var(--accent-soft)); transition: width .3s; }
+.hud { position: fixed; bottom: 16px; right: 20px; color: var(--muted); font-size: .85rem; z-index: 5; }
+.nav-hint { position: fixed; bottom: 16px; left: 20px; color: var(--muted); font-size: .8rem; z-index: 5; }
+button.arrow { position: fixed; top: 50%; transform: translateY(-50%); background: var(--surface);
+  border: 1px solid var(--border); color: var(--text); width: 44px; height: 44px; border-radius: 50%;
+  font-size: 1.2rem; cursor: pointer; z-index: 6; opacity: .5; }
+button.arrow:hover { opacity: 1; }
+button.prev { left: 14px; } button.next { right: 14px; }
+@media (max-width: 680px){ .two { grid-template-columns: 1fr; } }
+</style>
+</head><body>
+<div class="deck"><section class="slide title"><div class="eyebrow">SOP · hr · v1.0.0</div><h1 class="grad-text">Hire for an open role: requisition to signed contract</h1><p class="lead">Take an approved hiring need from an open requisition through sourcing, structured selection, a conditional offer, compliant screening, and a fully executed employment agreement — consistently, defensibly, and with the candidate experience and legal obligations handled at every step.</p><p class="muted">Talent Acquisition · 2026-01-15</p></section><section class="slide "><h2>Scope</h2><div class="two"><div><h3>In scope</h3><ul><li>Requisition creation and headcount/budget approval</li><li>Job description and job-related selection criteria</li><li>Sourcing, application screening, and interviews</li><li>Structured evaluation, selection, and reference checks</li><li>Conditional offer, FCRA-compliant background screening, and adverse action</li><li>Offer, negotiation, and execution of the employment agreement</li><li>Initiation of right-to-work (Form I-9) and handoff to onboarding</li></ul></div><div><h3>Out of scope</h3><ul><li>Day-one onboarding and orientation (see SOP-HR-001)</li><li>Long-range workforce planning and headcount strategy</li><li>Independent contractor / 1099 engagements</li><li>Immigration sponsorship and visa petitions</li></ul></div></div></section><section class="slide "><h2>Outcome</h2><h3>What "done" looks like</h3><ul><li>A qualified candidate hired through a consistent, documented, defensible process</li><li>A fully executed employment agreement on file</li><li>Right-to-work verification initiated with a clean handoff to onboarding</li></ul><h3>Measured by</h3><ul><li>Time-to-fill (requisition approved to offer accepted)</li><li>Time-to-hire (candidate entry to offer accepted)</li><li>Offer acceptance rate</li><li>Selection-stage adverse-impact ratio (4/5 rule)</li><li>Scorecard completion rate</li></ul></section><section class="slide "><h2>Who does what</h2><div class="roles"><div class="role"><strong>Hiring Manager</strong><span class="muted">Owns the role, its requirements, and the final selection decision; Defines job-related criteria and participates in structured interviews</span></div><div class="role"><strong>Recruiter / Talent Acquisition</strong><span class="muted">Drives the process end to end and owns the candidate experience; Sources, screens, coordinates interviews, and extends offers</span></div><div class="role"><strong>HR Business Partner</strong><span class="muted">Oversees process compliance, recordkeeping, and offer/contract governance; Owns FCRA adverse action and right-to-work verification</span></div><div class="role"><strong>Interview Panel</strong><span class="muted">Conducts structured interviews and completes anchored scorecards; Provides evidence-based, job-related evaluations</span></div><div class="role"><strong>Compensation / Finance Approver</strong><span class="muted">Approves headcount, budget, and the compensation package; Confirms the offer sits within the approved band</span></div><div class="role"><strong>Legal / Compliance</strong><span class="muted">Reviews non-standard offer terms and the employment agreement; Advises on adverse action and jurisdictional requirements</span></div><div class="role"><strong>Candidate</strong><span class="muted">External party; responds to the offer and completes required documents</span></div></div></section><section class="slide divider"><h2 class="grad-text">The procedure</h2><p class="muted">18 steps · ~19% automatable</p></section><section class="slide "><div class="step-top"><span class="kicker">Step 1 · S1</span><span class="badges"><span class="badge semi-automated">semi-automated</span><span class="badge auto">auto · ats</span></span></div><h2>Open and document the requisition</h2><p class="muted">👤 Hiring Manager · ⏱ 60m</p><p>Capture the confirmed hiring need as a requisition in the ATS: role, level, reporting line, justification, target start, and the business case. This is the record everything else hangs off.</p><pre><code>ats req upsert --external-id &quot;$REQ_KEY&quot; --role &quot;$ROLE_TITLE&quot; --level &quot;$LEVEL&quot; --manager &quot;$HM&quot; --justification-file ./business-case.md</code></pre><div class="verify">✔ A requisition record exists in the ATS with role, level, reporting line, and business case.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 2 · S2</span><span class="badges"><span class="badge decision">decision</span></span></div><h2>Approve headcount and budget</h2><p class="muted">👤 Compensation / Finance Approver · ⏱ 30m</p><p>Finance / compensation reviews the requisition against headcount plan and budget and either approves it to open or returns it. No sourcing happens before approval.</p><div class="verify">✔ The requisition shows an approval record with approver, date, and budgeted band.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 3 · S3</span><span class="badges"><span class="badge manual">manual</span></span></div><h2>Finalize the job description and selection criteria</h2><p class="muted">👤 Recruiter / Talent Acquisition · ⏱ 90m</p><p>With the hiring manager, turn the requisition into an approved job description and a structured scorecard: 6–12 job-related competencies, each with behavioral anchors. Requirements must be necessary for the role.</p><div class="verify">✔ Every listed requirement is job-related and consistent with business necessity; the scorecard defines competencies with behavioral anchors.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 4 · S4</span><span class="badges"><span class="badge semi-automated">semi-automated</span><span class="badge auto">auto · ats</span></span></div><h2>Source candidates</h2><p class="muted">👤 Recruiter / Talent Acquisition · ⏱ 240m</p><p>Post the role to the required internal and external channels and run sourcing and referrals to build a diverse, qualified pipeline. Honor any internal-posting or pay-transparency requirements.</p><pre><code>ats job post --req &quot;$REQ_ID&quot; --channels internal,careers,linkedin --pay-range &quot;$PAY_RANGE&quot; --idempotency-key &quot;$REQ_ID-post&quot;</code></pre><div class="verify">✔ The role is posted to all required channels and a candidate pipeline is building in the ATS.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 5 · S5</span><span class="badges"><span class="badge semi-automated">semi-automated</span><span class="badge auto">auto · ats</span></span></div><h2>Screen applications</h2><p class="muted">👤 Recruiter / Talent Acquisition · ⏱ 180m</p><p>Review applicants against the same job-related criteria and shortlist. Do not ask about criminal history at this stage where fair-chance law applies.</p><pre><code>ats screen run --req &quot;$REQ_ID&quot; --criteria ./job-related-criteria.yaml --log ./screening-log.csv</code></pre><div class="verify">✔ All applicants are screened against the same criteria and screening decisions are logged.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 6 · S6</span><span class="badges"><span class="badge manual">manual</span></span></div><h2>Recruiter phone screen</h2><p class="muted">👤 Recruiter / Talent Acquisition · ⏱ 180m</p><p>Hold a consistent phone/video screen with each shortlisted candidate to confirm fit, motivation, logistics, and compensation expectations.</p><div class="verify">✔ Each candidate is screened with the same core questions; notes are recorded in the ATS.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 7 · S7</span><span class="badges"><span class="badge semi-automated">semi-automated</span><span class="badge auto">auto · ats</span></span></div><h2>Administer job-related assessments</h2><p class="muted">👤 Recruiter / Talent Acquisition · ⏱ 60m</p><p>Where the role calls for it, administer the same validated, job-related assessment to every candidate and record results. Skip only if no assessment is used for this role.</p><pre><code>ats assessment send --candidates ./shortlist.csv --assessment &quot;$ASSESSMENT_ID&quot; --if-not-sent</code></pre><div class="verify">✔ The same assessment is sent to all candidates for the role and results are recorded.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 8 · S8</span><span class="badges"><span class="badge manual">manual</span></span></div><h2>Conduct structured interviews</h2><p class="muted">👤 Interview Panel · ⏱ 240m</p><p>Run structured panel interviews using the same core questions for every candidate, scoring against the BARS scorecard. Offer reasonable accommodations on request.</p><div class="verify">✔ Every interviewer completes an anchored scorecard with evidence notes; the same core questions were used.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 9 · S9</span><span class="badges"><span class="badge decision">decision</span></span></div><h2>Debrief and make the selection decision</h2><p class="muted">👤 Hiring Manager · ⏱ 60m</p><p>Convene a structured debrief to reconcile scores against the anchors — not to reach consensus by social pressure — and make a documented, job-related decision. Retain the records.</p><div class="verify">✔ The decision and its rationale are documented and stored; the selection-rate is checked against the 4/5 rule.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 10 · S10</span><span class="badges"><span class="badge manual">manual</span></span></div><h2>Complete reference checks</h2><p class="muted">👤 Recruiter / Talent Acquisition · ⏱ 60m</p><p>Run consistent, job-related reference checks on the selected candidate and record the results before making the offer conditional.</p><div class="verify">✔ References are completed with consistent questions and results are recorded.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 11 · S11</span><span class="badges"><span class="badge manual">manual</span></span></div><h2>Approve compensation and extend a conditional verbal offer</h2><p class="muted">👤 Recruiter / Talent Acquisition · ⏱ 60m</p><p>Confirm the package is approved and within band, then extend a verbal offer that is explicitly conditional on clearing screening and right-to-work checks. Follow up in writing summarizing the key terms.</p><div class="verify">✔ Compensation is approved and within band; the conditional verbal offer and its terms are confirmed by email.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 12 · S12</span><span class="badges"><span class="badge decision">decision</span></span></div><h2>Candidate response and negotiation</h2><p class="muted">👤 Candidate · ⏱ 30m</p><p>The candidate accepts, negotiates, or declines the conditional offer. Route accordingly; re-approve compensation for any counter-offer.</p><div class="verify">✔ The candidate&#x27;s response is recorded; any negotiated changes are captured before proceeding.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 13 · S13</span><span class="badges"><span class="badge semi-automated">semi-automated</span><span class="badge auto">auto · cra-api</span></span></div><h2>Disclose, authorize, and run the background check</h2><p class="muted">👤 HR Business Partner · ⏱ 30m</p><p>Provide the standalone FCRA disclosure and obtain separate written authorization, then order the background check via the CRA. Keep the conditional offer in place while screening runs.</p><pre><code>cra-api order --candidate &quot;$CANDIDATE_ID&quot; --package standard --auth-file ./signed-authorization.pdf --idempotency-key &quot;$CANDIDATE_ID-$REQ_ID&quot;</code></pre><div class="verify">✔ A signed standalone disclosure and authorization are on file before the report is ordered; the report is stored securely.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 14 · S14</span><span class="badges"><span class="badge decision">decision</span></span></div><h2>Adjudicate the results</h2><p class="muted">👤 HR Business Partner · ⏱ 45m</p><p>Review the background and reference results. If nothing disqualifying is found, proceed to the written offer. If there is potentially disqualifying information, apply an individualized assessment and enter adverse action.</p><div class="verify">✔ The adjudication applies job-relatedness and an individualized assessment; the rationale is documented.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 15 · S15</span><span class="badges"><span class="badge decision">decision</span></span></div><h2>Run FCRA adverse action (only if withdrawing)</h2><p class="muted">👤 HR Business Partner · ⏱ 90m</p><p>Send the pre-adverse-action notice with a copy of the report and the Summary of Rights, wait a reasonable period for dispute (best practice at least five business days; some jurisdictions longer), then either restore the offer or send the final adverse-action notice.</p><div class="verify">✔ Both notices are documented with dates and the waiting period is observed; no irreversible internal action is taken during the waiting period.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 16 · S16</span><span class="badges"><span class="badge semi-automated">semi-automated</span><span class="badge auto">auto · e-signature</span></span></div><h2>Extend the formal written offer</h2><p class="muted">👤 HR Business Partner · ⏱ 60m</p><p>Issue the written offer letter / employment agreement matching the approved compensation and the verbal terms, with an acceptance deadline. Route any non-standard terms to Legal first.</p><pre><code>esign send --template employment-agreement --candidate &quot;$CANDIDATE_ID&quot; --fields ./offer-terms.json --deadline &quot;$ACCEPT_BY&quot; --idempotency-key &quot;$CANDIDATE_ID-offer&quot;</code></pre><div class="verify">✔ The sent offer matches approved terms; non-standard terms were reviewed by Legal; an acceptance deadline is set.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 17 · S17</span><span class="badges"><span class="badge manual">manual</span></span></div><h2>Countersign and execute the agreement</h2><p class="muted">👤 HR Business Partner · ⏱ 30m</p><p>On candidate signature, countersign to fully execute the employment agreement and confirm the start date. This is the signed contract that completes the hire.</p><div class="verify">✔ Candidate signature and employer countersignature are on file; the start date is confirmed.</div></section><section class="slide "><div class="step-top"><span class="kicker">Step 18 · S18</span><span class="badges"><span class="badge semi-automated">semi-automated</span><span class="badge auto">auto · e-verify</span></span></div><h2>Initiate right-to-work and hand off to onboarding</h2><p class="muted">👤 HR Business Partner · ⏱ 45m</p><p>Start Form I-9 and (if enrolled) E-Verify, and hand the new hire to onboarding. Section 1 is due no later than the first day; Section 2 within three business days of the start date.</p><pre><code>everify case ensure --employee &quot;$EMPLOYEE_ID&quot; --start-date &quot;$START_DATE&quot;</code></pre><div class="verify">✔ Form I-9 is initiated and the onboarding handoff package is delivered to the onboarding owner.</div></section><section class="slide "><h2>Safety &amp; compliance</h2><ul><li><strong>compliance</strong> — Evaluate every candidate for the same role against the same job-related criteria, in the same order; do not discriminate on protected characteristics. <span class="muted">(Title VII; ADEA; ADA)</span></li><li><strong>compliance</strong> — Interviews, tests, and screens are selection procedures — keep them job-related and consistent with business necessity, and monitor adverse impact (4/5 rule). <span class="muted">(EEOC Uniform Guidelines on Employee Selection Procedures (29 CFR Part 1607))</span></li><li><strong>data</strong> — Candidate and employee personal data must have a lawful basis, limited access, and defined retention; retain selection records at least one year (two years for federal contractors). <span class="muted">(29 CFR 1602.14; GDPR / CCPA)</span></li><li><strong>compliance</strong> — A background check via a CRA requires a standalone written disclosure and separate authorization; an adverse decision requires the two-step FCRA process (pre-adverse notice with the report and a Summary of Rights, a reasonable waiting period, then a final adverse-action notice). <span class="muted">(Fair Credit Reporting Act (15 U.S.C. 1681))</span></li><li><strong>compliance</strong> — Where fair-chance law applies, delay any criminal-history inquiry until after a conditional offer, and apply an EEOC individualized assessment (nature of the offense, time elapsed, job-relatedness). <span class="muted">(Ban-the-box / fair-chance laws)</span></li><li><strong>legal</strong> — Verify employment eligibility with Form I-9 — Section 1 no later than the first day of work, Section 2 within three business days of the start date; run E-Verify if enrolled. <span class="muted">(IRCA / Form I-9 (INA 274A))</span></li><li><strong>accessibility</strong> — Offer and honor reasonable accommodations to candidates with disabilities throughout the process. <span class="muted">(ADA)</span></li></ul></section><section class="slide title"><h2 class="grad-text">Run it</h2><ul><li>Follow the docs site for full detail and the mini-course.</li><li>Automatable steps ship as Python + Ansible.</li><li>Verify every step before moving on; roll back on failure.</li></ul><p class="muted">SOP-HR-002 · v1.0.0 · reproducibility 100/100</p></section></div>
+<div class="rail"><i></i></div>
+<button class="arrow prev" onclick="prev()" aria-label="Previous">‹</button>
+<button class="arrow next" onclick="next()" aria-label="Next">›</button>
+<div class="hud">1 / 25</div>
+<div class="nav-hint">← → to navigate · swipe on mobile</div>
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+let i = 0;
+function show(n){
+  i = Math.max(0, Math.min(slides.length-1, n));
+  slides.forEach((s,k)=>s.classList.toggle('active', k===i));
+  document.querySelector('.rail > i').style.width = ((i+1)/slides.length*100)+'%';
+  document.querySelector('.hud').textContent = (i+1)+' / '+slides.length;
+  location.hash = i+1;
+}
+function next(){ show(i+1); } function prev(){ show(i-1); }
+document.addEventListener('keydown', e=>{
+  if (['ArrowRight',' ','PageDown'].includes(e.key)) { e.preventDefault(); next(); }
+  if (['ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
+  if (e.key==='Home') show(0);
+  if (e.key==='End') show(slides.length-1);
+});
+let sx=0;
+document.addEventListener('touchstart', e=>sx=e.touches[0].clientX, {passive:true});
+document.addEventListener('touchend', e=>{
+  const dx=e.changedTouches[0].clientX-sx;
+  if (Math.abs(dx)>50){ dx<0?next():prev(); }
+});
+window.addEventListener('load', ()=>{ show((parseInt(location.hash.slice(1))||1)-1); });
+</script>
+</body></html>

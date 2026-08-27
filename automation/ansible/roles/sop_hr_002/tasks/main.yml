@@ -1,0 +1,212 @@
+---
+- name: "S1 — Open and document the requisition"
+  ansible.builtin.shell: |
+    ats req upsert --external-id "$REQ_KEY" --role "$ROLE_TITLE" --level "$LEVEL" --manager "$HM" --justification-file ./business-case.md
+  # marked idempotent in the IR; add creates:/removes: or a changed_when guard for true idempotence
+  register: s1_result
+  changed_when: false  # TODO: set a real changed_when
+  tags: ['S1']
+
+- name: "S1 — verify"
+  ansible.builtin.debug:
+    msg: "VERIFY: A requisition record exists in the ATS with role, level, reporting line, and business case."
+  tags: ['S1', 'verify']
+
+- name: "S2 — MANUAL: Approve headcount and budget"
+  ansible.builtin.debug:
+    msg: "Finance / compensation reviews the requisition against headcount plan and budget and either approves it to open or returns it. No sourcing happens before approval."
+  tags: ['S2', 'manual']
+
+- name: "S2 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Approve headcount and budget — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S2', 'manual']
+
+- name: "S3 — MANUAL: Finalize the job description and selection criteria"
+  ansible.builtin.debug:
+    msg: "With the hiring manager, turn the requisition into an approved job description and a structured scorecard: 6–12 job-related competencies, each with behavioral anchors. Requirements must be necessary for the role."
+  tags: ['S3', 'manual']
+
+- name: "S3 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Finalize the job description and selection criteria — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S3', 'manual']
+
+- name: "S4 — Source candidates"
+  ansible.builtin.shell: |
+    ats job post --req "$REQ_ID" --channels internal,careers,linkedin --pay-range "$PAY_RANGE" --idempotency-key "$REQ_ID-post"
+  # marked idempotent in the IR; add creates:/removes: or a changed_when guard for true idempotence
+  register: s4_result
+  changed_when: false  # TODO: set a real changed_when
+  tags: ['S4']
+
+- name: "S4 — verify"
+  ansible.builtin.debug:
+    msg: "VERIFY: The role is posted to all required channels and a candidate pipeline is building in the ATS."
+  tags: ['S4', 'verify']
+
+- name: "S5 — Screen applications"
+  ansible.builtin.shell: |
+    ats screen run --req "$REQ_ID" --criteria ./job-related-criteria.yaml --log ./screening-log.csv
+  # marked idempotent in the IR; add creates:/removes: or a changed_when guard for true idempotence
+  register: s5_result
+  changed_when: false  # TODO: set a real changed_when
+  tags: ['S5']
+
+- name: "S5 — verify"
+  ansible.builtin.debug:
+    msg: "VERIFY: All applicants are screened against the same criteria and screening decisions are logged."
+  tags: ['S5', 'verify']
+
+- name: "S6 — MANUAL: Recruiter phone screen"
+  ansible.builtin.debug:
+    msg: "Hold a consistent phone/video screen with each shortlisted candidate to confirm fit, motivation, logistics, and compensation expectations."
+  tags: ['S6', 'manual']
+
+- name: "S6 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Recruiter phone screen — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S6', 'manual']
+
+- name: "S7 — Administer job-related assessments"
+  ansible.builtin.shell: |
+    ats assessment send --candidates ./shortlist.csv --assessment "$ASSESSMENT_ID" --if-not-sent
+  # marked idempotent in the IR; add creates:/removes: or a changed_when guard for true idempotence
+  register: s7_result
+  changed_when: false  # TODO: set a real changed_when
+  tags: ['S7']
+
+- name: "S7 — verify"
+  ansible.builtin.debug:
+    msg: "VERIFY: The same assessment is sent to all candidates for the role and results are recorded."
+  tags: ['S7', 'verify']
+
+- name: "S8 — MANUAL: Conduct structured interviews"
+  ansible.builtin.debug:
+    msg: "Run structured panel interviews using the same core questions for every candidate, scoring against the BARS scorecard. Offer reasonable accommodations on request."
+  tags: ['S8', 'manual']
+
+- name: "S8 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Conduct structured interviews — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S8', 'manual']
+
+- name: "S9 — MANUAL: Debrief and make the selection decision"
+  ansible.builtin.debug:
+    msg: "Convene a structured debrief to reconcile scores against the anchors — not to reach consensus by social pressure — and make a documented, job-related decision. Retain the records."
+  tags: ['S9', 'manual']
+
+- name: "S9 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Debrief and make the selection decision — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S9', 'manual']
+
+- name: "S10 — MANUAL: Complete reference checks"
+  ansible.builtin.debug:
+    msg: "Run consistent, job-related reference checks on the selected candidate and record the results before making the offer conditional."
+  tags: ['S10', 'manual']
+
+- name: "S10 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Complete reference checks — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S10', 'manual']
+
+- name: "S11 — MANUAL: Approve compensation and extend a conditional verbal offer"
+  ansible.builtin.debug:
+    msg: "Confirm the package is approved and within band, then extend a verbal offer that is explicitly conditional on clearing screening and right-to-work checks. Follow up in writing summarizing the key terms."
+  tags: ['S11', 'manual']
+
+- name: "S11 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Approve compensation and extend a conditional verbal offer — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S11', 'manual']
+
+- name: "S12 — MANUAL: Candidate response and negotiation"
+  ansible.builtin.debug:
+    msg: "The candidate accepts, negotiates, or declines the conditional offer. Route accordingly; re-approve compensation for any counter-offer."
+  tags: ['S12', 'manual']
+
+- name: "S12 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Candidate response and negotiation — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S12', 'manual']
+
+- name: "S13 — Disclose, authorize, and run the background check"
+  ansible.builtin.shell: |
+    cra-api order --candidate "$CANDIDATE_ID" --package standard --auth-file ./signed-authorization.pdf --idempotency-key "$CANDIDATE_ID-$REQ_ID"
+  # marked idempotent in the IR; add creates:/removes: or a changed_when guard for true idempotence
+  register: s13_result
+  changed_when: false  # TODO: set a real changed_when
+  tags: ['S13']
+
+- name: "S13 — verify"
+  ansible.builtin.debug:
+    msg: "VERIFY: A signed standalone disclosure and authorization are on file before the report is ordered; the report is stored securely."
+  tags: ['S13', 'verify']
+
+- name: "S14 — MANUAL: Adjudicate the results"
+  ansible.builtin.debug:
+    msg: "Review the background and reference results. If nothing disqualifying is found, proceed to the written offer. If there is potentially disqualifying information, apply an individualized assessment and enter adverse action."
+  tags: ['S14', 'manual']
+
+- name: "S14 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Adjudicate the results — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S14', 'manual']
+
+- name: "S15 — MANUAL: Run FCRA adverse action (only if withdrawing)"
+  ansible.builtin.debug:
+    msg: "Send the pre-adverse-action notice with a copy of the report and the Summary of Rights, wait a reasonable period for dispute (best practice at least five business days; some jurisdictions longer), then either restore the offer or send the final adverse-action notice."
+  tags: ['S15', 'manual']
+
+- name: "S15 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Run FCRA adverse action (only if withdrawing) — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S15', 'manual']
+
+- name: "S16 — Extend the formal written offer"
+  ansible.builtin.shell: |
+    esign send --template employment-agreement --candidate "$CANDIDATE_ID" --fields ./offer-terms.json --deadline "$ACCEPT_BY" --idempotency-key "$CANDIDATE_ID-offer"
+  # marked idempotent in the IR; add creates:/removes: or a changed_when guard for true idempotence
+  register: s16_result
+  changed_when: false  # TODO: set a real changed_when
+  tags: ['S16']
+
+- name: "S16 — verify"
+  ansible.builtin.debug:
+    msg: "VERIFY: The sent offer matches approved terms; non-standard terms were reviewed by Legal; an acceptance deadline is set."
+  tags: ['S16', 'verify']
+
+- name: "S17 — MANUAL: Countersign and execute the agreement"
+  ansible.builtin.debug:
+    msg: "On candidate signature, countersign to fully execute the employment agreement and confirm the start date. This is the signed contract that completes the hire."
+  tags: ['S17', 'manual']
+
+- name: "S17 — pause for operator to complete manual step"
+  ansible.builtin.pause:
+    prompt: "Complete: Countersign and execute the agreement — press ENTER when done"
+  when: not (skip_pauses | default(false))
+  tags: ['S17', 'manual']
+
+- name: "S18 — Initiate right-to-work and hand off to onboarding"
+  ansible.builtin.shell: |
+    everify case ensure --employee "$EMPLOYEE_ID" --start-date "$START_DATE"
+  # marked idempotent in the IR; add creates:/removes: or a changed_when guard for true idempotence
+  register: s18_result
+  changed_when: false  # TODO: set a real changed_when
+  tags: ['S18']
+
+- name: "S18 — verify"
+  ansible.builtin.debug:
+    msg: "VERIFY: Form I-9 is initiated and the onboarding handoff package is delivered to the onboarding owner."
+  tags: ['S18', 'verify']

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hire for an open role: requisition to signed contract — poster</title>
+<style>
+:root { --accent: #7c3aed; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  margin: 0; background: #f8fafc; color: #0f172a; }
+.poster { max-width: 900px; margin: 0 auto; padding: 40px; }
+.header { background: var(--accent); color: #fff; border-radius: 16px; padding: 28px 32px;
+  margin-bottom: 28px; }
+.header .eyebrow { text-transform: uppercase; letter-spacing: .15em; font-size: 13px;
+  opacity: .85; }
+.header h1 { font-size: 40px; margin: 6px 0 8px; line-height: 1.05; }
+.header p { font-size: 17px; margin: 0; opacity: .95; }
+.card { display: flex; gap: 20px; background: #fff; border-radius: 14px; padding: 22px 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08); border-left: 8px solid var(--accent); }
+.num { font-size: 44px; font-weight: 800; color: var(--accent); min-width: 54px;
+  line-height: 1; }
+.body { flex: 1; }
+.top { display: flex; align-items: center; gap: 12px; }
+.card h2 { font-size: 24px; margin: 0; }
+.who { color: #64748b; font-size: 15px; margin: 4px 0 10px; }
+code { display: block; background: #0f172a; color: #e2e8f0; padding: 8px 12px;
+  border-radius: 8px; font-size: 14px; margin: 6px 0; overflow-wrap: anywhere; }
+.v { color: #15803d; font-weight: 600; margin-top: 6px; }
+.rb { color: #b45309; margin-top: 4px; }
+.danger { background: #dc2626; color: #fff; font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: 999px; }
+.decide { background: #d97706; color: #fff; font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: 999px; }
+.arrow { text-align: center; color: var(--accent); font-size: 22px; margin: 6px 0; }
+.footer { margin-top: 28px; display: flex; justify-content: space-between;
+  background: #0f172a; color: #e2e8f0; border-radius: 12px; padding: 16px 24px;
+  font-size: 15px; }
+.footer b { color: #fff; }
+@media print {
+  body { background: #fff; }
+  .poster { max-width: none; padding: 0; }
+  .card, .header, .footer { box-shadow: none; }
+  @page { size: A3; margin: 14mm; }
+}
+</style></head>
+<body><div class="poster">
+  <div class="header">
+    <div class="eyebrow">hr · SOP-HR-002 · v1.0.0</div>
+    <h1>Hire for an open role: requisition to signed contract</h1>
+    <p>Take an approved hiring need from an open requisition through sourcing, structured selection, a conditional offer, compliant screening, and a fully executed employment agreement — consistently, defensibly, and with the candidate experience and legal obligations handled at every step.</p>
+  </div>
+  <div class="card">
+          <div class="num">1</div>
+          <div class="body">
+            <div class="top"><h2>Open and document the requisition</h2></div>
+            <div class="who">👤 Hiring Manager · ⏱ 60m</div>
+            <code>ats req upsert --external-id &quot;$REQ_KEY&quot; --role &quot;$ROLE_TITLE&quot; --level &quot;$LEVEL&quot; --manager &quot;$HM&quot; --justification-file ./business-case.md</code><div class="v">✔ A requisition record exists in the ATS with role, level, reporting line, and business case.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">2</div>
+          <div class="body">
+            <div class="top"><h2>Approve headcount and budget</h2><span class="decide">DECISION</span></div>
+            <div class="who">👤 Compensation / Finance Approver · ⏱ 30m</div>
+            <div class="v">✔ The requisition shows an approval record with approver, date, and budgeted band.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">3</div>
+          <div class="body">
+            <div class="top"><h2>Finalize the job description and selection criteria</h2></div>
+            <div class="who">👤 Recruiter / Talent Acquisition · ⏱ 90m</div>
+            <div class="v">✔ Every listed requirement is job-related and consistent with business necessity; the scorecard defines competencies with behavioral anchors.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">4</div>
+          <div class="body">
+            <div class="top"><h2>Source candidates</h2></div>
+            <div class="who">👤 Recruiter / Talent Acquisition · ⏱ 240m</div>
+            <code>ats job post --req &quot;$REQ_ID&quot; --channels internal,careers,linkedin --pay-range &quot;$PAY_RANGE&quot; --idempotency-key &quot;$REQ_ID-post&quot;</code><div class="v">✔ The role is posted to all required channels and a candidate pipeline is building in the ATS.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">5</div>
+          <div class="body">
+            <div class="top"><h2>Screen applications</h2></div>
+            <div class="who">👤 Recruiter / Talent Acquisition · ⏱ 180m</div>
+            <code>ats screen run --req &quot;$REQ_ID&quot; --criteria ./job-related-criteria.yaml --log ./screening-log.csv</code><div class="v">✔ All applicants are screened against the same criteria and screening decisions are logged.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">6</div>
+          <div class="body">
+            <div class="top"><h2>Recruiter phone screen</h2></div>
+            <div class="who">👤 Recruiter / Talent Acquisition · ⏱ 180m</div>
+            <div class="v">✔ Each candidate is screened with the same core questions; notes are recorded in the ATS.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">7</div>
+          <div class="body">
+            <div class="top"><h2>Administer job-related assessments</h2></div>
+            <div class="who">👤 Recruiter / Talent Acquisition · ⏱ 60m</div>
+            <code>ats assessment send --candidates ./shortlist.csv --assessment &quot;$ASSESSMENT_ID&quot; --if-not-sent</code><div class="v">✔ The same assessment is sent to all candidates for the role and results are recorded.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">8</div>
+          <div class="body">
+            <div class="top"><h2>Conduct structured interviews</h2></div>
+            <div class="who">👤 Interview Panel · ⏱ 240m</div>
+            <div class="v">✔ Every interviewer completes an anchored scorecard with evidence notes; the same core questions were used.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">9</div>
+          <div class="body">
+            <div class="top"><h2>Debrief and make the selection decision</h2><span class="decide">DECISION</span></div>
+            <div class="who">👤 Hiring Manager · ⏱ 60m</div>
+            <div class="v">✔ The decision and its rationale are documented and stored; the selection-rate is checked against the 4/5 rule.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">10</div>
+          <div class="body">
+            <div class="top"><h2>Complete reference checks</h2></div>
+            <div class="who">👤 Recruiter / Talent Acquisition · ⏱ 60m</div>
+            <div class="v">✔ References are completed with consistent questions and results are recorded.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">11</div>
+          <div class="body">
+            <div class="top"><h2>Approve compensation and extend a conditional verbal offer</h2></div>
+            <div class="who">👤 Recruiter / Talent Acquisition · ⏱ 60m</div>
+            <div class="v">✔ Compensation is approved and within band; the conditional verbal offer and its terms are confirmed by email.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">12</div>
+          <div class="body">
+            <div class="top"><h2>Candidate response and negotiation</h2><span class="decide">DECISION</span></div>
+            <div class="who">👤 Candidate · ⏱ 30m</div>
+            <div class="v">✔ The candidate&#x27;s response is recorded; any negotiated changes are captured before proceeding.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">13</div>
+          <div class="body">
+            <div class="top"><h2>Disclose, authorize, and run the background check</h2></div>
+            <div class="who">👤 HR Business Partner · ⏱ 30m</div>
+            <code>cra-api order --candidate &quot;$CANDIDATE_ID&quot; --package standard --auth-file ./signed-authorization.pdf --idempotency-key &quot;$CANDIDATE_ID-$REQ_ID&quot;</code><div class="v">✔ A signed standalone disclosure and authorization are on file before the report is ordered; the report is stored securely.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">14</div>
+          <div class="body">
+            <div class="top"><h2>Adjudicate the results</h2><span class="decide">DECISION</span></div>
+            <div class="who">👤 HR Business Partner · ⏱ 45m</div>
+            <div class="v">✔ The adjudication applies job-relatedness and an individualized assessment; the rationale is documented.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">15</div>
+          <div class="body">
+            <div class="top"><h2>Run FCRA adverse action (only if withdrawing)</h2><span class="decide">DECISION</span></div>
+            <div class="who">👤 HR Business Partner · ⏱ 90m</div>
+            <div class="v">✔ Both notices are documented with dates and the waiting period is observed; no irreversible internal action is taken during the waiting period.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">16</div>
+          <div class="body">
+            <div class="top"><h2>Extend the formal written offer</h2></div>
+            <div class="who">👤 HR Business Partner · ⏱ 60m</div>
+            <code>esign send --template employment-agreement --candidate &quot;$CANDIDATE_ID&quot; --fields ./offer-terms.json --deadline &quot;$ACCEPT_BY&quot; --idempotency-key &quot;$CANDIDATE_ID-offer&quot;</code><div class="v">✔ The sent offer matches approved terms; non-standard terms were reviewed by Legal; an acceptance deadline is set.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">17</div>
+          <div class="body">
+            <div class="top"><h2>Countersign and execute the agreement</h2></div>
+            <div class="who">👤 HR Business Partner · ⏱ 30m</div>
+            <div class="v">✔ Candidate signature and employer countersignature are on file; the start date is confirmed.</div>
+          </div>
+        </div><div class="arrow">▼</div><div class="card">
+          <div class="num">18</div>
+          <div class="body">
+            <div class="top"><h2>Initiate right-to-work and hand off to onboarding</h2></div>
+            <div class="who">👤 HR Business Partner · ⏱ 45m</div>
+            <code>everify case ensure --employee &quot;$EMPLOYEE_ID&quot; --start-date &quot;$START_DATE&quot;</code><div class="v">✔ Form I-9 is initiated and the onboarding handoff package is delivered to the onboarding owner.</div>
+          </div>
+        </div>
+  <div class="footer">
+    <span><b>18</b> steps · <b>1d 2h</b> est. effort</span>
+    <span>reproducibility <b>A</b> (100/100)</span>
+    <span>generated by sop-forge</span>
+  </div>
+</div></body></html>

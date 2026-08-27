@@ -1,0 +1,4 @@
+---
+# Safety switches. Nothing destructive runs unless you opt in.
+confirm_destructive: false
+skip_pauses: false
